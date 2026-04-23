@@ -73,7 +73,7 @@ NovaTech Portal implements the following security measures:
 Use the following account to access the system as a registered user:
 
 Email: testuser@novatech.com  
-Password: Test1234!
+Password: Test1234
 
 ---
 
