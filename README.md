@@ -73,9 +73,11 @@ NovaTech Portal implements the following security measures:
 Use the following account to access the system as a registered user:
 
 Email: testuser@novatech.com  
-Password: Test1234
+Password: Test1234!
 
 ---
+
+## Installation (Local Development)
 
 ## Installation (Local Development)
 
@@ -88,6 +90,7 @@ php artisan key:generate
 php artisan migrate --seed
 php artisan serve
 ```
+
 
 ---
 
