@@ -19,13 +19,20 @@ COPY . /var/www/html
 # Set working directory
 WORKDIR /var/www/html
 
+# Set Apache document root to /public
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+# Update Apache config to use the new document root
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/000-default.conf \
+    /etc/apache2/apache2.conf
+
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Laravel permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Expose port
 EXPOSE 80
 
 CMD ["apache2-foreground"]
