@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# Install system dependencies
+# Install system dependencies (Node + npm included)
 RUN apt-get update && apt-get install -y \
     zip unzip git curl libonig-dev libzip-dev libpng-dev libpq-dev \
     nodejs npm
@@ -42,4 +42,5 @@ EXPOSE 80
 
 # Run migrations at runtime, then start Apache
 CMD php artisan migrate --force && apache2-foreground
+
 
