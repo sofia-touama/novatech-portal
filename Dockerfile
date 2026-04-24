@@ -33,10 +33,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Laravel permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Run migrations automatically
-RUN php artisan migrate --force || true
-
 EXPOSE 80
 
-CMD ["apache2-foreground"]
-
+CMD php artisan migrate --force && apache2-foreground
