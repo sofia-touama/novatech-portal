@@ -1,7 +1,7 @@
 services:
   - type: web
     name: novatech-portal
-    env: php
+    runtime: php
     plan: free
     buildCommand: |
       composer install --no-dev --optimize-autoloader
@@ -13,3 +13,5 @@ services:
         value: production
       - key: APP_DEBUG
         value: false
+
+
