@@ -39,12 +39,7 @@ RUN npm install
 RUN npm run build
 
 # Laravel permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-EXPOSE 80
-
-# Run migrations at runtime, then start Apache
-CMD php artisan migrate --force && apache2-foreground
+RUN chown -R www
 
 
 
