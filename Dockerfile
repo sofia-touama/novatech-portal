@@ -1,9 +1,12 @@
 FROM php:8.2-apache
 
-# Install system dependencies (Node + npm included)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    zip unzip git curl libonig-dev libzip-dev libpng-dev libpq-dev \
-    nodejs npm
+    zip unzip git curl libonig-dev libzip-dev libpng-dev libpq-dev
+
+# Install Node.js (official NodeSource method)
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
@@ -42,5 +45,6 @@ EXPOSE 80
 
 # Run migrations at runtime, then start Apache
 CMD php artisan migrate --force && apache2-foreground
+
 
 
